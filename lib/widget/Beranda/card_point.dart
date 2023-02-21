@@ -72,39 +72,54 @@ class _CardPointState extends State<CardPoint> {
                                   "Saldo di Dompet kamu sebesar:",
                                   style: TextStyle(color: Colors.white),
                                 ),
-                                Row(
-                                  children: [
-                                    SizedBox(
-                                        height: ScreenUtil().setHeight(80),
-                                        // width: ScreenUtil().setWidth(50),
-                                        child: const Image(
-                                          image: AssetImage(
-                                            'assets/icons/coin.png',
+                                Flexible(
+                                  child: Container(
+                                    //color: Colors.amber,
+                                    height: ScreenUtil().setHeight(80),
+                                    width: ScreenUtil().setWidth(320),
+                                    child: Row(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.center,
+                                      children: [
+                                        SizedBox(
+                                            height: ScreenUtil().setHeight(65),
+                                            // width: ScreenUtil().setWidth(50),
+                                            child: const Image(
+                                              image: AssetImage(
+                                                'assets/icons/coin.png',
+                                              ),
+                                            )),
+                                        Flexible(
+                                          child: Text(
+                                            total2,
+                                            maxLines: 2,
+                                            textAlign: TextAlign.center,
+                                            style: TextStyle(
+                                              fontSize: ScreenUtil().setSp(22),
+                                              color: Colors.white,
+                                            ),
                                           ),
-                                        )),
-                                    const SizedBox(
-                                      width: 5,
+                                        )
+                                      ],
                                     ),
-                                    Container(
+                                  ),
+                                ),
+                                Column(
+                                  children: [
+                                    const Text(
+                                      "Tanggal terakhir transaksi",
+                                      style: TextStyle(color: Colors.white60),
+                                    ),
+                                    Padding(
+                                      padding: const EdgeInsets.only(top: 8.0),
                                       child: Text(
-                                        total2.toString(),
+                                        tanggal,
                                         style: TextStyle(
-                                          fontSize: ScreenUtil().setSp(15),
-                                          color: Colors.white,
-                                        ),
+                                            fontSize: ScreenUtil().setSp(20),
+                                            color: Colors.white),
                                       ),
                                     )
                                   ],
-                                ),
-                                Text(
-                                  "Tanggal terakhir transaksi",
-                                  style: TextStyle(color: Colors.white60),
-                                ),
-                                Text(
-                                  tanggal,
-                                  style: TextStyle(
-                                      fontSize: ScreenUtil().setSp(12),
-                                      color: Colors.white),
                                 )
                               ],
                             ),

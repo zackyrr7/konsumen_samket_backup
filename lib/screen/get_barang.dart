@@ -46,7 +46,7 @@ class _GetState extends State<Get> {
                   itemBuilder: ((context, index) {
                     return GridTile(
                       child: Padding(
-                        padding: const EdgeInsets.all(8.0),
+                        padding: const EdgeInsets.all(5.0),
                         child: Container(
                           decoration: BoxDecoration(
                               border: Border.all(), color: Colors.white),
@@ -54,15 +54,17 @@ class _GetState extends State<Get> {
                             children: [
                               Padding(
                                 padding: const EdgeInsets.only(top: 8.0),
-                                child: SizedBox(
+                                child: Container(
                                     //color: Colors.black,
-                                    width: ScreenUtil().setWidth(110),
-                                    height: ScreenUtil().setHeight(110),
-                                    child: Image.network(
+                                    width: ScreenUtil().setWidth(140),
+                                    height: ScreenUtil().setHeight(140),
+                                    child: 
+                                    Image.network(
                                       '$url2/storage/${isiBarang[index].foto}'
                                           .toString(),
                                       fit: BoxFit.contain,
-                                    )),
+                                    )
+                                    ),
                               ),
                               Text(
                                 isiBarang[index].nama,
