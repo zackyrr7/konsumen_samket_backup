@@ -20,6 +20,13 @@ class LoginPage extends StatefulWidget {
 class _LoginPageState extends State<LoginPage> {
   bool _isLoading = false;
 
+  bool _password = true;
+  void _show() {
+    setState(() {
+      _password = !_password;
+    });
+  }
+
   late final SharedPreferences sharedPreferences;
 
   @override
@@ -30,8 +37,11 @@ class _LoginPageState extends State<LoginPage> {
 
   checkLoginStatus() async {
     sharedPreferences = await SharedPreferences.getInstance();
-    if(sharedPreferences.getString("token") != null) {
-      Navigator.of(context).pushAndRemoveUntil(MaterialPageRoute(builder: (BuildContext context) => const MyBotNavbar()), (Route<dynamic> route) => false);
+    if (sharedPreferences.getString("token") != null) {
+      Navigator.of(context).pushAndRemoveUntil(
+          MaterialPageRoute(
+              builder: (BuildContext context) => const MyBotNavbar()),
+          (Route<dynamic> route) => false);
     }
   }
 
@@ -58,18 +68,14 @@ class _LoginPageState extends State<LoginPage> {
   }
 
   // ignore: non_constant_identifier_names
-  signIn(String email,String password) async {
+  signIn(String email, String password) async {
     SharedPreferences sharedPreferences = await SharedPreferences.getInstance();
     Map data = {'email': email, 'password': password};
 
     // ignore: prefer_typing_uninitialized_variables, avoid_init_to_null
     var jsonResponse = null;
 
-
-
-    var response = await http.post(
-        Uri.parse("$url/login"),
-        body: data);
+    var response = await http.post(Uri.parse("$url/login"), body: data);
     if (response.statusCode == 200) {
       jsonResponse = json.decode(response.body);
       // ignore: avoid_print
@@ -82,14 +88,10 @@ class _LoginPageState extends State<LoginPage> {
         });
         //saveString("token", jsonResponse['token'].toString());
 
-        sharedPreferences.setString(
-            "token", jsonResponse['token'].toString());
-          sharedPreferences.setString(
-            "id", jsonResponse['id'].toString());
-            sharedPreferences.setString(
-            "nama", jsonResponse['nama'].toString());
-            sharedPreferences.setString(
-            "hp", jsonResponse['hp'].toString());
+        sharedPreferences.setString("token", jsonResponse['token'].toString());
+        sharedPreferences.setString("id", jsonResponse['id'].toString());
+        sharedPreferences.setString("nama", jsonResponse['nama'].toString());
+        sharedPreferences.setString("hp", jsonResponse['hp'].toString());
         Navigator.of(context).pushAndRemoveUntil(
             MaterialPageRoute(
                 builder: (BuildContext context) => const MyBotNavbar()),
@@ -141,6 +143,7 @@ class _LoginPageState extends State<LoginPage> {
         children: <Widget>[
           TextFormField(
             controller: nomorHPController,
+            keyboardType: TextInputType.phone,
             cursorColor: Colors.black,
             style: const TextStyle(color: Colors.black),
             decoration: const InputDecoration(
@@ -155,9 +158,16 @@ class _LoginPageState extends State<LoginPage> {
           TextFormField(
             controller: passwordController,
             cursorColor: Colors.black,
-            obscureText: true,
+            obscureText: _password,
             style: const TextStyle(color: Colors.black87),
-            decoration: const InputDecoration(
+            decoration: InputDecoration(
+              suffixIcon: GestureDetector(
+                onTap: () {
+                  _show();
+                },
+                child:
+                    Icon(_password ? Icons.visibility_off : Icons.visibility),
+              ),
               icon: Icon(Icons.lock, color: Colors.black87),
               hintText: "Password",
               border: UnderlineInputBorder(
@@ -194,7 +204,7 @@ _showAlertDialog(BuildContext context, String err) {
   );
   AlertDialog alert = AlertDialog(
     title: const Text("error"),
-    content: Text(err),
+    content: Text("Nomor Handphone/Password yang dimasukkan salah"),
     actions: [okButton],
   );
   showDialog(

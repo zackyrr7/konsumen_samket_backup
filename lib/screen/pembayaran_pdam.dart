@@ -1,5 +1,3 @@
-
-
 import 'dart:convert';
 
 import 'package:flutter/material.dart';
@@ -22,7 +20,7 @@ class PembayaranPdam extends StatefulWidget {
 }
 
 class _PembayaranPdamState extends State<PembayaranPdam> {
- @override
+  @override
   void initState() {
     // TODO: implement initState
     super.initState();
@@ -40,13 +38,24 @@ class _PembayaranPdamState extends State<PembayaranPdam> {
     });
   }
 
-
   bool _isLoading = false;
   @override
   Widget build(BuildContext context) {
     SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle.light
         .copyWith(statusBarColor: Colors.transparent));
     return Scaffold(
+      appBar: AppBar(
+        iconTheme: const IconThemeData(
+          color: Colors.black, //change your color here
+        ),
+        centerTitle: true,
+        title: const Text(
+          "Form Pembayaran PDAM",
+          style: TextStyle(color: Colors.black),
+        ),
+        elevation: 0,
+        backgroundColor: Colors.transparent,
+      ),
       body: Container(
           child: _isLoading
               ? const Center(
@@ -54,7 +63,7 @@ class _PembayaranPdamState extends State<PembayaranPdam> {
                 )
               : ListView(
                   children: <Widget>[
-                    logo(),
+                    //logo(),
                     CardPoint(),
                     input(),
                     tombol(),
@@ -72,14 +81,13 @@ class _PembayaranPdamState extends State<PembayaranPdam> {
   ) async {
     var jsonResponse = null;
     //try{
-    final response = await http.post(Uri.parse("$url/pdam"),
-     headers: {
+    final response = await http.post(Uri.parse("$url/pdam"), headers: {
       'Accept': 'application/json',
     }, body: {
       "nama": namaUser,
-      "nomor_hp":hp,
+      "nomor_hp": hp,
       "air": air,
-      "user_id":id
+      "user_id": id
     });
     if (response.statusCode == 200) {
       jsonResponse = json.decode(response.body);
@@ -106,12 +114,10 @@ class _PembayaranPdamState extends State<PembayaranPdam> {
       margin: const EdgeInsets.only(top: 20.0),
       //padding: const EdgeInsets.symmetric(horizontal: 20.0, vertical: 30.0),
       child: Center(
-          child: Flexible(
-        child: Text(
-          "Form Pembayaran PDAM",
-          textAlign: TextAlign.center,
-          style: TextStyle(fontSize: ScreenUtil().setSp(25)),
-        ),
+          child: Text(
+        "Form Pembayaran PDAM",
+        textAlign: TextAlign.center,
+        style: TextStyle(fontSize: ScreenUtil().setSp(25)),
       )),
     );
   }
@@ -119,30 +125,29 @@ class _PembayaranPdamState extends State<PembayaranPdam> {
   final _namaController = namaUser;
   final _nomorController = hp;
   final _airController = TextEditingController();
-   final _userController = id;
+  final _userController = id;
 
   Container input() {
     return Container(
       padding: const EdgeInsets.symmetric(horizontal: 15.0, vertical: 20.0),
       child: Column(
         children: <Widget>[
-          
           Padding(
             padding: const EdgeInsets.only(top: 8.0),
-            child: Container(
-              color: Colors.white,
-              child: TextFormField(
-                controller: _airController,
-                cursorColor: Colors.black,
-                //obscureText: true,
-                style: const TextStyle(color: Colors.black87),
-                decoration: const InputDecoration(
-                  //icon: Icon(Icons.lock, color: Colors.black87),
-                  hintText: "Nomor PDAM",
-                  border: UnderlineInputBorder(
-                      borderSide: BorderSide(color: Colors.black87)),
-                  hintStyle: TextStyle(color: Colors.black87),
+            child: TextFormField(
+              controller: _airController,
+              cursorColor: Colors.black,
+              //obscureText: true,
+              style: const TextStyle(color: Colors.black87),
+              decoration: const InputDecoration(
+                filled: true,
+                fillColor: Colors.white,
+                enabledBorder: OutlineInputBorder(
+                  borderSide: BorderSide(color: Colors.black12),
+                  borderRadius: BorderRadius.all(Radius.circular(5)),
                 ),
+                hintText: "Jenis Kendaraan Anda",
+                hintStyle: TextStyle(color: Colors.black87),
               ),
             ),
           ),
@@ -158,20 +163,14 @@ class _PembayaranPdamState extends State<PembayaranPdam> {
       padding: const EdgeInsets.symmetric(horizontal: 15.0),
       margin: const EdgeInsets.only(top: 15.0),
       child: ElevatedButton(
-        onPressed: 
-                _airController.text == "" 
-              
+        onPressed: _airController.text == ""
             ? null
             : () {
                 setState(() {
                   _isLoading = true;
                 });
-                transaksi(
-                  _namaController,
-                  _nomorController,
-                  _airController.text,
-                  _userController
-                );
+                transaksi(_namaController, _nomorController,
+                    _airController.text, _userController);
               },
 
         //color: Colors.purple,

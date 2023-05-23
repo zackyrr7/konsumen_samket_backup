@@ -32,9 +32,9 @@ class _BantuanState extends State<Bantuan> {
     super.initState();
     checkLoginStatus();
     listPertanyaan = serviceApi.getAllBarang();
-    
   }
-   checkLoginStatus() async {
+
+  checkLoginStatus() async {
     sharedPreferences = await SharedPreferences.getInstance();
     if (sharedPreferences.getString("token") == null) {
       Navigator.of(context).pushAndRemoveUntil(

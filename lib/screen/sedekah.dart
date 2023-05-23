@@ -45,6 +45,18 @@ class _SedekahState extends State<Sedekah> {
     SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle.light
         .copyWith(statusBarColor: Colors.transparent));
     return Scaffold(
+      appBar: AppBar(
+        iconTheme: const IconThemeData(
+          color: Colors.black, //change your color here
+        ),
+        centerTitle: true,
+        title: const Text(
+          "Form Pencuci",
+          style: TextStyle(color: Colors.black),
+        ),
+        elevation: 0,
+        backgroundColor: Colors.transparent,
+      ),
       body: Container(
           child: _isLoading
               ? const Center(
@@ -52,7 +64,7 @@ class _SedekahState extends State<Sedekah> {
                 )
               : ListView(
                   children: <Widget>[
-                    logo(),
+                    //logo(),
                     CardPoint(),
                     input(),
                     tombol(),
@@ -103,12 +115,10 @@ class _SedekahState extends State<Sedekah> {
       margin: const EdgeInsets.only(top: 20.0),
       //padding: const EdgeInsets.symmetric(horizontal: 20.0, vertical: 30.0),
       child: Center(
-          child: Flexible(
-        child: Text(
-          "Form Sedekah",
-          textAlign: TextAlign.center,
-          style: TextStyle(fontSize: ScreenUtil().setSp(25)),
-        ),
+          child: Text(
+        "Form Sedekah",
+        textAlign: TextAlign.center,
+        style: TextStyle(fontSize: ScreenUtil().setSp(25)),
       )),
     );
   }
@@ -129,24 +139,29 @@ class _SedekahState extends State<Sedekah> {
             color: Colors.white,
           ),
           child: TextFormField(
-              controller: _jumlahController,
-              cursorColor: Colors.black,
-              //obscureText: true,
-              // style: const TextStyle(color: Colors.black87),
-              // decoration: const InputDecoration(
-              //   //icon: Icon(Icons.lock, color: Colors.black87),
-              //   hintText: "jumlah Kendaraan Anda",
-              //   border: UnderlineInputBorder(
-              //       borderSide: BorderSide(color: Colors.black87)),
-              //   hintStyle: TextStyle(color: Colors.black87),
-              // ),
-              style: const TextStyle(color: Colors.black87),
-              decoration: InputDecoration(
-                border: OutlineInputBorder(
-                  borderRadius: BorderRadius.circular(10.0),
-                ),
-                hintText: "jumlah Sedekah yang ingin anda keluarkan",
-              )),
+            controller: _jumlahController,
+            cursorColor: Colors.black,
+            //obscureText: true,
+            // style: const TextStyle(color: Colors.black87),
+            // decoration: const InputDecoration(
+            //   //icon: Icon(Icons.lock, color: Colors.black87),
+            //   hintText: "jumlah Kendaraan Anda",
+            //   border: UnderlineInputBorder(
+            //       borderSide: BorderSide(color: Colors.black87)),
+            //   hintStyle: TextStyle(color: Colors.black87),
+            // ),
+            style: const TextStyle(color: Colors.black87),
+            decoration: const InputDecoration(
+              filled: true,
+              fillColor: Colors.white,
+              enabledBorder: OutlineInputBorder(
+                borderSide: BorderSide(color: Colors.black12),
+                borderRadius: BorderRadius.all(Radius.circular(5)),
+              ),
+              hintText: "Jumlah Sedekah",
+              hintStyle: TextStyle(color: Colors.black87),
+            ),
+          ),
         ),
       ),
     );
@@ -157,7 +172,7 @@ class _SedekahState extends State<Sedekah> {
       width: MediaQuery.of(context).size.width,
       height: 40.0,
       padding: const EdgeInsets.symmetric(horizontal: 15.0),
-      margin: const EdgeInsets.only(top: 15.0),
+      //margin: const EdgeInsets.only(top: 15.0),
       child: ElevatedButton(
         onPressed: _jumlahController.text == ""
             //_userController == ""
@@ -166,8 +181,8 @@ class _SedekahState extends State<Sedekah> {
                 setState(() {
                   _isLoading = true;
                 });
-                sedekah(_namaController, _nomorController, _jumlahController.text,
-                    _userController);
+                sedekah(_namaController, _nomorController,
+                    _jumlahController.text, _userController);
               },
 
         //color: Colors.purple,

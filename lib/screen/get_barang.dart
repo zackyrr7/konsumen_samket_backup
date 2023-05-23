@@ -49,7 +49,10 @@ class _GetState extends State<Get> {
                         padding: const EdgeInsets.all(5.0),
                         child: Container(
                           decoration: BoxDecoration(
-                              border: Border.all(), color: Colors.white),
+                              borderRadius:
+                                  BorderRadius.all(Radius.circular(10)),
+                              border: Border.all(),
+                              color: Colors.white),
                           child: Column(
                             children: [
                               Padding(
@@ -58,13 +61,11 @@ class _GetState extends State<Get> {
                                     //color: Colors.black,
                                     width: ScreenUtil().setWidth(140),
                                     height: ScreenUtil().setHeight(140),
-                                    child: 
-                                    Image.network(
+                                    child: Image.network(
                                       '$url2/storage/${isiBarang[index].foto}'
                                           .toString(),
                                       fit: BoxFit.contain,
-                                    )
-                                    ),
+                                    )),
                               ),
                               Text(
                                 isiBarang[index].nama,

@@ -1,4 +1,3 @@
-
 import 'dart:convert';
 
 import 'package:flutter/material.dart';
@@ -8,7 +7,6 @@ import 'package:http/http.dart' as http;
 import 'package:sampah_market/widget/beranda/card_point.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import '../constant.dart';
-
 
 String id = '';
 String namaUser = '';
@@ -22,7 +20,7 @@ class Listrik extends StatefulWidget {
 }
 
 class _ListrikState extends State<Listrik> {
-    @override
+  @override
   void initState() {
     // TODO: implement initState
     super.initState();
@@ -40,14 +38,24 @@ class _ListrikState extends State<Listrik> {
     });
   }
 
-
-
   bool _isLoading = false;
   @override
   Widget build(BuildContext context) {
     SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle.light
         .copyWith(statusBarColor: Colors.transparent));
     return Scaffold(
+      appBar: AppBar(
+        iconTheme: const IconThemeData(
+          color: Colors.black, //change your color here
+        ),
+        centerTitle: true,
+        title: const Text(
+          "Form PLN",
+          style: TextStyle(color: Colors.black),
+        ),
+        elevation: 0,
+        backgroundColor: Colors.transparent,
+      ),
       body: Container(
           child: _isLoading
               ? const Center(
@@ -55,7 +63,7 @@ class _ListrikState extends State<Listrik> {
                 )
               : ListView(
                   children: <Widget>[
-                    logo(),
+                    //logo(),
                     CardPoint(),
                     input(),
                     tombol(),
@@ -73,13 +81,13 @@ class _ListrikState extends State<Listrik> {
   ) async {
     var jsonResponse = null;
     //try{
-    final response = await http.post(Uri.parse("$url/lampu"),headers: {
+    final response = await http.post(Uri.parse("$url/lampu"), headers: {
       'Accept': 'application/json',
     }, body: {
       "nama": namaUser,
       "nomor_hp": hp,
       "PLN": PLN,
-      "user_id":id
+      "user_id": id
     });
     if (response.statusCode == 200) {
       jsonResponse = json.decode(response.body);
@@ -106,12 +114,10 @@ class _ListrikState extends State<Listrik> {
       margin: const EdgeInsets.only(top: 20.0),
       //padding: const EdgeInsets.symmetric(horizontal: 20.0, vertical: 30.0),
       child: Center(
-          child: Flexible(
-        child: Text(
-          "Form Penukaran Voucher Listrik",
-          textAlign: TextAlign.center,
-          style: TextStyle(fontSize: ScreenUtil().setSp(25)),
-        ),
+          child: Text(
+        "Form Penukaran Voucher Listrik",
+        textAlign: TextAlign.center,
+        style: TextStyle(fontSize: ScreenUtil().setSp(25)),
       )),
     );
   }
@@ -126,23 +132,22 @@ class _ListrikState extends State<Listrik> {
       padding: const EdgeInsets.symmetric(horizontal: 15.0, vertical: 20.0),
       child: Column(
         children: <Widget>[
-         
           Padding(
             padding: const EdgeInsets.only(top: 8.0),
-            child: Container(
-              color: Colors.white,
-              child: TextFormField(
-                controller: _PLNController,
-                cursorColor: Colors.black,
-                //obscureText: true,
-                style: const TextStyle(color: Colors.black87),
-                decoration: const InputDecoration(
-                  //icon: Icon(Icons.lock, color: Colors.black87),
-                  hintText: "Nomor PLN Anda",
-                  border: UnderlineInputBorder(
-                      borderSide: BorderSide(color: Colors.black87)),
-                  hintStyle: TextStyle(color: Colors.black87),
+            child: TextFormField(
+              controller: _PLNController,
+              cursorColor: Colors.black,
+              //obscureText: true,
+              style: const TextStyle(color: Colors.black87),
+              decoration: const InputDecoration(
+                filled: true,
+                fillColor: Colors.white,
+                enabledBorder: OutlineInputBorder(
+                  borderSide: BorderSide(color: Colors.black12),
+                  borderRadius: BorderRadius.all(Radius.circular(5)),
                 ),
+                hintText: "Nomor PLN Anda",
+                hintStyle: TextStyle(color: Colors.black87),
               ),
             ),
           ),
@@ -158,20 +163,14 @@ class _ListrikState extends State<Listrik> {
       padding: const EdgeInsets.symmetric(horizontal: 15.0),
       margin: const EdgeInsets.only(top: 15.0),
       child: ElevatedButton(
-        onPressed: 
-                _PLNController.text == "" 
-                
+        onPressed: _PLNController.text == ""
             ? null
             : () {
                 setState(() {
                   _isLoading = true;
                 });
-                transaksi(
-                  _namaController,
-                  _nomorController,
-                  _PLNController.text,
-                  _userController
-                );
+                transaksi(_namaController, _nomorController,
+                    _PLNController.text, _userController);
               },
 
         //color: Colors.purple,

@@ -39,7 +39,7 @@ class _PesanState extends State<Pesan> {
     _loadId();
   }
 
-   _loadId() async {
+  _loadId() async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
     setState(() {
       id = (prefs.getString('id') ?? '');
@@ -66,6 +66,18 @@ class _PesanState extends State<Pesan> {
     SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle.light
         .copyWith(statusBarColor: Colors.transparent));
     return Scaffold(
+        appBar: AppBar(
+          iconTheme: const IconThemeData(
+            color: Colors.black, //change your color here
+          ),
+          centerTitle: true,
+          title: const Text(
+            "Form Pemesanan",
+            style: TextStyle(color: Colors.black),
+          ),
+          elevation: 0,
+          backgroundColor: Colors.transparent,
+        ),
         body: FutureBuilder<User?>(
             future: listUser,
             builder: ((context, snapshot) {
@@ -78,10 +90,10 @@ class _PesanState extends State<Pesan> {
                           )
                         : ListView(
                             children: <Widget>[
-                              logo(),
+                              //logo(),
                               input(),
                               tombol(),
-                              
+
                               //catatan(),
                             ],
                           ));
@@ -93,17 +105,11 @@ class _PesanState extends State<Pesan> {
             })));
   }
 
-  transaksi(
-    String nama,
-    String nomor_hp,
-    String barang,
-    String alamat,
-    String tanggal,
-    String user_id
-  ) async {
+  transaksi(String nama, String nomor_hp, String barang, String alamat,
+      String tanggal, String user_id) async {
     var jsonResponse = null;
     //try{
-    final response = await http.post(Uri.parse("$url/pesan/"),headers: {
+    final response = await http.post(Uri.parse("$url/pesan/"), headers: {
       'Accept': 'application/json',
     }, body: {
       "nama": namaUser,
@@ -135,15 +141,13 @@ class _PesanState extends State<Pesan> {
   Container logo() {
     return Container(
       //color: Colors.white,
-      margin: const EdgeInsets.only(top: 20.0),
+      margin: const EdgeInsets.only(top: 10.0),
       //padding: const EdgeInsets.symmetric(horizontal: 20.0, vertical: 30.0),
       child: Center(
-          child: Flexible(
-        child: Text(
-          "Form Penjualan Barang",
-          textAlign: TextAlign.center,
-          style: TextStyle(fontSize: ScreenUtil().setSp(25)),
-        ),
+          child: Text(
+        "Form Penjualan Barang",
+        textAlign: TextAlign.center,
+        style: TextStyle(fontSize: ScreenUtil().setSp(25)),
       )),
     );
   }
@@ -157,10 +161,9 @@ class _PesanState extends State<Pesan> {
 
   Container input() {
     return Container(
-      padding: const EdgeInsets.symmetric(horizontal: 15.0, vertical: 20.0),
+      padding: const EdgeInsets.symmetric(horizontal: 15.0, vertical: 5.0),
       child: Column(
         children: <Widget>[
-          
           Padding(
             padding: const EdgeInsets.only(top: 8.0),
             child: Container(
@@ -230,8 +233,7 @@ class _PesanState extends State<Pesan> {
       padding: const EdgeInsets.symmetric(horizontal: 15.0),
       margin: const EdgeInsets.only(top: 15.0),
       child: ElevatedButton(
-        onPressed: 
-                _alamatController.text == "" ||
+        onPressed: _alamatController.text == "" ||
                 _tanggalController.text == "" ||
                 _barangController.text == ""
             ? null
@@ -244,7 +246,8 @@ class _PesanState extends State<Pesan> {
                     _nomorController,
                     _barangController.text,
                     _tanggalController.text,
-                    _alamatController.text,_userController);
+                    _alamatController.text,
+                    _userController);
               },
 
         //color: Colors.purple,

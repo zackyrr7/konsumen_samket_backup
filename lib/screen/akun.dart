@@ -51,8 +51,6 @@ class _AkunState extends State<Akun> {
 
   @override
   Widget build(BuildContext context) {
-
-
     return Scaffold(
         appBar: AppBar(
           title: const Text("Akun"),
@@ -104,13 +102,11 @@ class _AkunState extends State<Akun> {
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
-                            Flexible(
-                              child: Text(
-                                isiUser.name,
-                                maxLines: 1,
-                                style:
-                                    TextStyle(fontSize: ScreenUtil().setSp(18)),
-                              ),
+                            Text(
+                              isiUser.name,
+                              maxLines: 1,
+                              style:
+                                  TextStyle(fontSize: ScreenUtil().setSp(18)),
                             ),
                           ],
                         ),
@@ -158,15 +154,16 @@ class _AkunState extends State<Akun> {
                 SizedBox(
                   width: ScreenUtil().setWidth(360),
                   height: ScreenUtil().setHeight(150),
-                 
                   child: Column(
                     children: [
                       const Text("Ikuti Media Sosial Kami"),
                       Padding(
                         padding: const EdgeInsets.only(top: 8.0),
-                        child: Row(mainAxisAlignment: MainAxisAlignment.spaceAround,
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceAround,
                           children: [
-                            GestureDetector(onTap: _openIgChat,
+                            GestureDetector(
+                              onTap: _openIgChat,
                               child: SizedBox(
                                 width: ScreenUtil().setWidth(100),
                                 height: ScreenUtil().setHeight(100),
@@ -186,7 +183,8 @@ class _AkunState extends State<Akun> {
                                 ),
                               ),
                             ),
-                            GestureDetector(onTap: _openTTChat,
+                            GestureDetector(
+                              onTap: _openTTChat,
                               child: SizedBox(
                                 width: ScreenUtil().setWidth(100),
                                 height: ScreenUtil().setHeight(100),
@@ -206,7 +204,8 @@ class _AkunState extends State<Akun> {
                                 ),
                               ),
                             ),
-                            GestureDetector(onTap: _openWhatsAppChat,
+                            GestureDetector(
+                              onTap: _openWhatsAppChat,
                               child: SizedBox(
                                 width: ScreenUtil().setWidth(100),
                                 height: ScreenUtil().setHeight(100),
@@ -245,21 +244,21 @@ class _AkunState extends State<Akun> {
 
 void _openWhatsAppChat() async {
   String phoneNumber = '+6281347771171';
-  
+
   String url = 'https://wa.me/$phoneNumber?text=';
 
   // ignore: deprecated_member_use
   await launch(url);
 }
+
 void _openTTChat() async {
- 
   String url = 'http://www.tiktok.com/@sampahmarket';
 
   // ignore: deprecated_member_use
   await launch(url);
 }
-void _openIgChat() async {
 
+void _openIgChat() async {
   String url = 'https://www.instagram.com/sampah_market/';
 
   // ignore: deprecated_member_use

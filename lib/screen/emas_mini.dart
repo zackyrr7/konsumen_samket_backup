@@ -1,5 +1,3 @@
-
-
 import 'dart:convert';
 
 import 'package:flutter/material.dart';
@@ -13,6 +11,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 String id = '';
 String namaUser = '';
 String hp = '';
+
 class EmasMini extends StatefulWidget {
   const EmasMini({Key? key}) : super(key: key);
 
@@ -21,12 +20,13 @@ class EmasMini extends StatefulWidget {
 }
 
 class _EmasMiniState extends State<EmasMini> {
-@override
+  @override
   void initState() {
     // TODO: implement initState
     super.initState();
     _loadId();
   }
+
   _loadId() async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
     setState(() {
@@ -38,13 +38,24 @@ class _EmasMiniState extends State<EmasMini> {
     });
   }
 
-
   bool _isLoading = false;
   @override
   Widget build(BuildContext context) {
     SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle.light
         .copyWith(statusBarColor: Colors.transparent));
     return Scaffold(
+      appBar: AppBar(
+        iconTheme: const IconThemeData(
+          color: Colors.black, //change your color here
+        ),
+        centerTitle: true,
+        title: const Text(
+          "Form Emas Mini",
+          style: TextStyle(color: Colors.black),
+        ),
+        elevation: 0,
+        backgroundColor: Colors.transparent,
+      ),
       body: Container(
           child: _isLoading
               ? const Center(
@@ -52,7 +63,7 @@ class _EmasMiniState extends State<EmasMini> {
                 )
               : ListView(
                   children: <Widget>[
-                    logo(),
+                    //logo(),
                     CardPoint(),
                     input(),
                     tombol(),
@@ -103,12 +114,10 @@ class _EmasMiniState extends State<EmasMini> {
       margin: const EdgeInsets.only(top: 20.0),
       //padding: const EdgeInsets.symmetric(horizontal: 20.0, vertical: 30.0),
       child: Center(
-          child: Flexible(
-        child: Text(
-          "Form Penukaran Mini Gold",
-          textAlign: TextAlign.center,
-          style: TextStyle(fontSize: ScreenUtil().setSp(25)),
-        ),
+          child: Text(
+        "Form Penukaran Mini Gold",
+        textAlign: TextAlign.center,
+        style: TextStyle(fontSize: ScreenUtil().setSp(25)),
       )),
     );
   }
@@ -123,7 +132,6 @@ class _EmasMiniState extends State<EmasMini> {
       padding: const EdgeInsets.symmetric(horizontal: 15.0, vertical: 20.0),
       child: Column(
         children: <Widget>[
-          
           Padding(
             padding: const EdgeInsets.only(top: 8.0),
             child: Container(
@@ -155,20 +163,14 @@ class _EmasMiniState extends State<EmasMini> {
       padding: const EdgeInsets.symmetric(horizontal: 15.0),
       margin: const EdgeInsets.only(top: 15.0),
       child: ElevatedButton(
-        onPressed: 
-                _emasController.text == "" 
-               
+        onPressed: _emasController.text == ""
             ? null
             : () {
                 setState(() {
                   _isLoading = true;
                 });
-                transaksi(
-                  _namaController,
-                  _nomorController,
-                  _emasController.text,
-                   _userController
-                );
+                transaksi(_namaController, _nomorController,
+                    _emasController.text, _userController);
               },
 
         //color: Colors.purple,
@@ -194,7 +196,7 @@ class _EmasMiniState extends State<EmasMini> {
             Padding(
               padding: const EdgeInsets.all(8.0),
               child: Text(
-                "Berat emas mini yang tersedia sebesar \n0.025 gram dengan saldo 60.000\n0.05 gram dengan saldo 90.000\n0.1 gram dengan saldo 150.000\n0.2 gram dengan saldo 280.000\n0.5 gram dengan saldo 595.000\nPihak admin akan melakukan konfirmasi kepada anda. Terima Kasih",                     
+                "Berat emas mini yang tersedia sebesar \n0.025 gram dengan saldo 60.000\n0.05 gram dengan saldo 90.000\n0.1 gram dengan saldo 150.000\n0.2 gram dengan saldo 280.000\n0.5 gram dengan saldo 595.000\nPihak admin akan melakukan konfirmasi kepada anda. Terima Kasih",
                 textAlign: TextAlign.justify,
                 style: TextStyle(fontSize: ScreenUtil().setSp(12)),
               ),

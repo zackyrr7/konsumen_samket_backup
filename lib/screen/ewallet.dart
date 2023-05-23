@@ -44,6 +44,18 @@ class _EWalletState extends State<EWallet> {
     SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle.light
         .copyWith(statusBarColor: Colors.transparent));
     return Scaffold(
+      appBar: AppBar(
+        iconTheme: const IconThemeData(
+          color: Colors.black, //change your color here
+        ),
+        centerTitle: true,
+        title: const Text(
+          "Form E-Wallet",
+          style: TextStyle(color: Colors.black),
+        ),
+        elevation: 0,
+        backgroundColor: Colors.transparent,
+      ),
       body: Container(
           child: _isLoading
               ? const Center(
@@ -51,7 +63,7 @@ class _EWalletState extends State<EWallet> {
                 )
               : ListView(
                   children: <Widget>[
-                    logo(),
+                    //logo(),
                     CardPoint(),
                     input(),
                     tombol(),
@@ -106,12 +118,10 @@ class _EWalletState extends State<EWallet> {
       margin: const EdgeInsets.only(top: 20.0),
       //padding: const EdgeInsets.symmetric(horizontal: 20.0, vertical: 30.0),
       child: Center(
-          child: Flexible(
-        child: Text(
-          "Form E-Wallet",
-          textAlign: TextAlign.center,
-          style: TextStyle(fontSize: ScreenUtil().setSp(25)),
-        ),
+          child: Text(
+        "Form E-Wallet",
+        textAlign: TextAlign.center,
+        style: TextStyle(fontSize: ScreenUtil().setSp(25)),
       )),
     );
   }
@@ -130,58 +140,58 @@ class _EWalletState extends State<EWallet> {
         children: <Widget>[
           Padding(
             padding: const EdgeInsets.only(top: 8.0),
-            child: Container(
-              color: Colors.white,
-              child: TextFormField(
-                controller: _jenisController,
-                cursorColor: Colors.black,
-                //obscureText: true,
-                style: const TextStyle(color: Colors.black87),
-                decoration: const InputDecoration(
-                  //icon: Icon(Icons.lock, color: Colors.black87),
-                  hintText: "Jenis E-Wallet",
-                  border: UnderlineInputBorder(
-                      borderSide: BorderSide(color: Colors.black87)),
-                  hintStyle: TextStyle(color: Colors.black87),
+            child: TextFormField(
+              controller: _jenisController,
+              cursorColor: Colors.black,
+              //obscureText: true,
+              style: const TextStyle(color: Colors.black87),
+              decoration: const InputDecoration(
+                filled: true,
+                fillColor: Colors.white,
+                enabledBorder: OutlineInputBorder(
+                  borderSide: BorderSide(color: Colors.black12),
+                  borderRadius: BorderRadius.all(Radius.circular(5)),
                 ),
+                hintText: "Jenis E-Wallet",
+                hintStyle: TextStyle(color: Colors.black87),
               ),
             ),
           ),
           Padding(
             padding: const EdgeInsets.only(top: 8.0),
-            child: Container(
-              color: Colors.white,
-              child: TextFormField(
-                controller: _walletController,
-                cursorColor: Colors.black,
-                //obscureText: true,
-                style: const TextStyle(color: Colors.black87),
-                decoration: const InputDecoration(
-                  //icon: Icon(Icons.lock, color: Colors.black87),
-                  hintText: "Nomor E-Wallet",
-                  border: UnderlineInputBorder(
-                      borderSide: BorderSide(color: Colors.black87)),
-                  hintStyle: TextStyle(color: Colors.black87),
+            child: TextFormField(
+              controller: _walletController,
+              cursorColor: Colors.black,
+              //obscureText: true,
+              style: const TextStyle(color: Colors.black87),
+              decoration: const InputDecoration(
+                filled: true,
+                fillColor: Colors.white,
+                enabledBorder: OutlineInputBorder(
+                  borderSide: BorderSide(color: Colors.black12),
+                  borderRadius: BorderRadius.all(Radius.circular(5)),
                 ),
+                hintText: "Nomor E-Wallet",
+                hintStyle: TextStyle(color: Colors.black87),
               ),
             ),
           ),
           Padding(
             padding: const EdgeInsets.only(top: 8.0),
-            child: Container(
-              color: Colors.white,
-              child: TextFormField(
-                controller: _totalController,
-                cursorColor: Colors.black,
-                //obscureText: true,
-                style: const TextStyle(color: Colors.black87),
-                decoration: const InputDecoration(
-                  //icon: Icon(Icons.lock, color: Colors.black87),
-                  hintText: "Total yang ingin di cairkan",
-                  border: UnderlineInputBorder(
-                      borderSide: BorderSide(color: Colors.black87)),
-                  hintStyle: TextStyle(color: Colors.black87),
+            child: TextFormField(
+              controller: _totalController,
+              cursorColor: Colors.black,
+              //obscureText: true,
+              style: const TextStyle(color: Colors.black87),
+              decoration: const InputDecoration(
+                filled: true,
+                fillColor: Colors.white,
+                enabledBorder: OutlineInputBorder(
+                  borderSide: BorderSide(color: Colors.black12),
+                  borderRadius: BorderRadius.all(Radius.circular(5)),
                 ),
+                hintText: "Total yang ingin di cairkan",
+                hintStyle: TextStyle(color: Colors.black87),
               ),
             ),
           ),

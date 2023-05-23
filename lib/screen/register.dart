@@ -17,6 +17,12 @@ class Register extends StatefulWidget {
 
 class _RegisterState extends State<Register> {
   bool _isLoading = false;
+  bool _password = true;
+  void _show() {
+    setState(() {
+      _password = !_password;
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -39,14 +45,17 @@ class _RegisterState extends State<Register> {
     );
   }
 
-  register(String name, String email, String password,) async {
+  register(
+    String name,
+    String email,
+    String password,
+  ) async {
     var jsonResponse = null;
     //try{
     final response = await http.post(Uri.parse("$url/register"), body: {
       "name": name,
       "email": email,
       "password": password,
-      
     });
     if (response.statusCode == 200) {
       jsonResponse = json.decode(response.body);
@@ -86,7 +95,7 @@ class _RegisterState extends State<Register> {
   final _nameController = TextEditingController();
   final _nomorController = TextEditingController();
   final _passController = TextEditingController();
-  
+
   Container input() {
     return Container(
       padding: const EdgeInsets.symmetric(horizontal: 15.0, vertical: 20.0),
@@ -106,6 +115,7 @@ class _RegisterState extends State<Register> {
           ),
           TextFormField(
             controller: _nomorController,
+            keyboardType: TextInputType.phone,
             cursorColor: Colors.black,
             style: const TextStyle(color: Colors.black),
             decoration: const InputDecoration(
@@ -121,7 +131,14 @@ class _RegisterState extends State<Register> {
             cursorColor: Colors.black,
             obscureText: true,
             style: const TextStyle(color: Colors.black87),
-            decoration: const InputDecoration(
+            decoration: InputDecoration(
+              suffixIcon: GestureDetector(
+                onTap: () {
+                  _show();
+                },
+                child:
+                    Icon(_password ? Icons.visibility_off : Icons.visibility),
+              ),
               icon: Icon(Icons.lock, color: Colors.black87),
               hintText: "Password",
               border: UnderlineInputBorder(
@@ -129,7 +146,6 @@ class _RegisterState extends State<Register> {
               hintStyle: TextStyle(color: Colors.black87),
             ),
           ),
-         
         ],
       ),
     );
@@ -147,8 +163,7 @@ class _RegisterState extends State<Register> {
                 MaterialStateProperty.all(hijauMain.withOpacity(0.5))),
         onPressed: _nameController.text == "" ||
                 _nomorController.text == "" ||
-                _passController.text == "" 
-                
+                _passController.text == ""
             ? null
             : () {
                 setState(() {

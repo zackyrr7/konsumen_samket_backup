@@ -44,6 +44,18 @@ class _CuciiState extends State<Cucii> {
     SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle.light
         .copyWith(statusBarColor: Colors.transparent));
     return Scaffold(
+      appBar: AppBar(
+        iconTheme: const IconThemeData(
+          color: Colors.black, //change your color here
+        ),
+        centerTitle: true,
+        title: const Text(
+          "Form Pencuci",
+          style: TextStyle(color: Colors.black),
+        ),
+        elevation: 0,
+        backgroundColor: Colors.transparent,
+      ),
       body: Container(
           child: _isLoading
               ? const Center(
@@ -51,8 +63,8 @@ class _CuciiState extends State<Cucii> {
                 )
               : ListView(
                   children: <Widget>[
-                    logo(),
-                    CardPoint(),
+                    //logo(),
+                    const CardPoint(),
                     input(),
                     tombol(),
                     catatan(),
@@ -102,12 +114,10 @@ class _CuciiState extends State<Cucii> {
       margin: const EdgeInsets.only(top: 20.0),
       //padding: const EdgeInsets.symmetric(horizontal: 20.0, vertical: 30.0),
       child: Center(
-          child: Flexible(
-        child: Text(
-          "Form Pemesanan Pencucian Mobil",
-          textAlign: TextAlign.center,
-          style: TextStyle(fontSize: ScreenUtil().setSp(25)),
-        ),
+          child: Text(
+        "Form Pemesanan Pencucian Mobil",
+        textAlign: TextAlign.center,
+        style: TextStyle(fontSize: ScreenUtil().setSp(25)),
       )),
     );
   }
@@ -124,20 +134,21 @@ class _CuciiState extends State<Cucii> {
         children: <Widget>[
           Padding(
             padding: const EdgeInsets.only(top: 8.0),
-            child: Container(
-              color: Colors.white,
-              child: TextFormField(
-                controller: _jenisController,
-                cursorColor: Colors.black,
-                //obscureText: true,
-                style: const TextStyle(color: Colors.black87),
-                decoration: const InputDecoration(
-                  //icon: Icon(Icons.lock, color: Colors.black87),
-                  hintText: "Jenis Kendaraan Anda",
-                  border: UnderlineInputBorder(
-                      borderSide: BorderSide(color: Colors.black87)),
-                  hintStyle: TextStyle(color: Colors.black87),
+            child: TextFormField(
+              controller: _jenisController,
+              cursorColor: Colors.black,
+              //obscureText: true,
+              style: const TextStyle(color: Colors.black87),
+
+              decoration: const InputDecoration(
+                filled: true,
+                fillColor: Colors.white,
+                enabledBorder: OutlineInputBorder(
+                  borderSide: BorderSide(color: Colors.black12),
+                  borderRadius: BorderRadius.all(Radius.circular(5)),
                 ),
+                hintText: "Jenis Kendaraan Anda",
+                hintStyle: TextStyle(color: Colors.black87),
               ),
             ),
           ),
@@ -151,17 +162,17 @@ class _CuciiState extends State<Cucii> {
       width: MediaQuery.of(context).size.width,
       height: 40.0,
       padding: const EdgeInsets.symmetric(horizontal: 15.0),
-      margin: const EdgeInsets.only(top: 15.0),
+      //margin: const EdgeInsets.only(top: 0.0),
       child: ElevatedButton(
-        onPressed:  _jenisController.text == ""
+        onPressed: _jenisController.text == ""
             //_userController == ""
             ? null
             : () {
                 setState(() {
                   _isLoading = true;
                 });
-                wash(_namaController, _nomorController,
-                    _jenisController.text, _userController);
+                wash(_namaController, _nomorController, _jenisController.text,
+                    _userController);
               },
 
         //color: Colors.purple,
@@ -204,7 +215,7 @@ _showBerhasilDialog(BuildContext context, String) {
   );
   AlertDialog alert = AlertDialog(
     title: const Text("Transaksi Berhasil"),
-    content: Text('Pihak Sampah Market akan menkonfirmasi pesanan anda'),
+    content: const Text('Pihak Sampah Market akan menkonfirmasi pesanan anda'),
     actions: [okButton],
   );
   showDialog(

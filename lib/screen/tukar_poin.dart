@@ -44,213 +44,41 @@ class _TukarPointState extends State<TukarPoint> {
                   Padding(
                     padding: const EdgeInsets.all(8.0),
                     child: GridTile(
-                        child: Flexible(
-                      child: GestureDetector(
-                        onTap: () {
-                          Navigator.push(context,
-                              MaterialPageRoute(builder: (context) {
-                            return const Sedekah();
-                          }));
-                        },
-                        child: Container(
-                          decoration: BoxDecoration(
-                              border: Border.all(color: Colors.black),
-                              color: Colors.white,
-                              borderRadius: BorderRadius.circular(20)),
-                          child: Column(
-                            children: [
-                              Container(
-                                  decoration: BoxDecoration(
-                                      color: Colors.white,
-                                      borderRadius: BorderRadius.circular(20)),
-                                  width: ScreenUtil().setWidth(180),
-                                  height: ScreenUtil().setHeight(120),
-                                  child: const Image(
-                                    image: AssetImage("assets/gambar/sedekah.png"),
-                                    fit: BoxFit.contain,
-                                  )),
-                              const Padding(
-                                padding: EdgeInsets.all(8.0),
-                                child: Center(
-                                  child: Text(
-                                    ('Sedekah'),
-                                    textAlign: TextAlign.center,
-                                  ),
-                                ),
-                              )
-                            ],
-                          ),
-                        ),
-                      ),
-                    )),
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.all(8.0),
-                    child: GridTile(
-                        child: Flexible(
-                      child: GestureDetector(
-                        onTap: () {
-                          Navigator.push(context,
-                              MaterialPageRoute(builder: (context) {
-                            return const EmasMini();
-                          }));
-                        },
-                        child: Container(
-                          decoration: BoxDecoration(
-                              border: Border.all(color: Colors.black),
-                              color: Colors.white,
-                              borderRadius: BorderRadius.circular(20)),
-                          child: Column(
-                            children: [
-                              Container(
-                                  decoration: BoxDecoration(
-                                      color: Colors.white,
-                                      borderRadius: BorderRadius.circular(20)),
-                                  width: ScreenUtil().setWidth(180),
-                                  height: ScreenUtil().setHeight(120),
-                                  child: const Image(
-                                    image: AssetImage("assets/gambar/emas.png"),
-                                    fit: BoxFit.contain,
-                                  )),
-                              const Padding(
-                                padding: EdgeInsets.all(8.0),
-                                child: Center(
-                                  child: Text(
-                                    ('Emas Mini'),
-                                    textAlign: TextAlign.center,
-                                  ),
-                                ),
-                              )
-                            ],
-                          ),
-                        ),
-                      ),
-                    )),
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.all(8.0),
-                    child: GridTile(
-                        child: Flexible(
-                      child: GestureDetector(
-                        onTap: () {
-                          Navigator.push(context,
-                              MaterialPageRoute(builder: (context) {
-                            return const Listrik();
-                          }));
-                        },
-                        child: Container(
-                          decoration: BoxDecoration(
-                              border: Border.all(color: Colors.black),
-                              color: Colors.white,
-                              borderRadius: BorderRadius.circular(20)),
-                          child: Column(
-                            children: [
-                              Container(
-                                  decoration: BoxDecoration(
-                                      color: Colors.white,
-                                      borderRadius: BorderRadius.circular(20)),
-                                  width: ScreenUtil().setWidth(180),
-                                  height: ScreenUtil().setHeight(120),
-                                  child: const Image(
-                                    image:
-                                        AssetImage("assets/gambar/listrik.png"),
-                                    fit: BoxFit.contain,
-                                  )),
-                              const Center(
-                                child: Padding(
-                                  padding: EdgeInsets.all(8.0),
-                                  child: Text(
-                                    ('Voucher Listrik'),
-                                    textAlign: TextAlign.center,
-                                  ),
-                                ),
-                              )
-                            ],
-                          ),
-                        ),
-                      ),
-                    )),
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.all(8.0),
-                    child: GridTile(
-                        child: Flexible(
-                      child: GestureDetector(
-                        onTap: () {
-                          Navigator.push(context,
-                              MaterialPageRoute(builder: (context) {
-                            return const PembayaranPdam();
-                          }));
-                        },
-                        child: Container(
-                          decoration: BoxDecoration(
-                              border: Border.all(color: Colors.black),
-                              color: Colors.white,
-                              borderRadius: BorderRadius.circular(20)),
-                          child: Column(
-                            children: [
-                              Container(
-                                  decoration: BoxDecoration(
-                                      color: Colors.white,
-                                      borderRadius: BorderRadius.circular(20)),
-                                  width: ScreenUtil().setWidth(180),
-                                  height: ScreenUtil().setHeight(120),
-                                  child: const Image(
-                                    image: AssetImage("assets/gambar/air.png"),
-                                    fit: BoxFit.contain,
-                                  )),
-                              const Center(
-                                child: Padding(
-                                  padding: EdgeInsets.all(8.0),
-                                  child: Text(
-                                    ('Pembayaran PDAM'),
-                                    textAlign: TextAlign.center,
-                                  ),
-                                ),
-                              )
-                            ],
-                          ),
-                        ),
-                      ),
-                    )),
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.all(8.0),
-                    child: GridTile(
-                        child: Flexible(
-                      child: GestureDetector(
-                        onTap: () {
-                          Navigator.push(context,
-                              MaterialPageRoute(builder: (context) {
-                            return const EWallet();
-                          }));
-                        },
-                        child: Container(
-                          decoration: BoxDecoration(
-                              border: Border.all(color: Colors.black),
-                              color: Colors.white,
-                              borderRadius: BorderRadius.circular(20)),
-                          child: Column(
-                            children: [
-                              Container(
-                                  decoration: BoxDecoration(
-                                      color: Colors.white,
-                                      borderRadius: BorderRadius.circular(20)),
-                                  width: ScreenUtil().setWidth(180),
-                                  height: ScreenUtil().setHeight(120),
-                                  child: const Image(
-                                    image:
-                                        AssetImage("assets/gambar/ewallet.png"),
-                                    fit: BoxFit.contain,
-                                  )),
-                              const Center(
+                        child: GestureDetector(
+                      onTap: () {
+                        Navigator.push(context,
+                            MaterialPageRoute(builder: (context) {
+                          return const Sedekah();
+                        }));
+                      },
+                      child: Container(
+                        decoration: BoxDecoration(
+                            border: Border.all(color: Colors.black),
+                            color: Colors.white,
+                            borderRadius: BorderRadius.circular(20)),
+                        child: Column(
+                          children: [
+                            Container(
+                                decoration: BoxDecoration(
+                                    color: Colors.white,
+                                    borderRadius: BorderRadius.circular(20)),
+                                width: ScreenUtil().setWidth(180),
+                                height: ScreenUtil().setHeight(120),
+                                child: const Image(
+                                  image:
+                                      AssetImage("assets/gambar/sedekah.png"),
+                                  fit: BoxFit.contain,
+                                )),
+                            const Padding(
+                              padding: EdgeInsets.all(8.0),
+                              child: Center(
                                 child: Text(
-                                  ('E-Wallet'),
+                                  ('Sedekah'),
                                   textAlign: TextAlign.center,
                                 ),
-                              )
-                            ],
-                          ),
+                              ),
+                            )
+                          ],
                         ),
                       ),
                     )),
@@ -258,42 +86,203 @@ class _TukarPointState extends State<TukarPoint> {
                   Padding(
                     padding: const EdgeInsets.all(8.0),
                     child: GridTile(
-                        child: Flexible(
-                      child: GestureDetector(
-                        onTap: () {
-                          Navigator.push(context,
-                              MaterialPageRoute(builder: (context) {
-                            return const Cucii();
-                          }));
-                        },
-                        child: Container(
-                          decoration: BoxDecoration(
-                              border: Border.all(color: Colors.black),
-                              color: Colors.white,
-                              borderRadius: BorderRadius.circular(20)),
-                          child: Column(
-                            children: [
-                              Container(
-                                  decoration: BoxDecoration(
-                                      color: Colors.white,
-                                      borderRadius: BorderRadius.circular(20)),
-                                  width: ScreenUtil().setWidth(180),
-                                  height: ScreenUtil().setHeight(120),
-                                  child: const Image(
-                                    image: AssetImage("assets/gambar/cuci.png"),
-                                    fit: BoxFit.contain,
-                                  )),
-                               Center(
-                                child: Padding(
-                                  padding: const EdgeInsets.all(8.0),
-                                  child: Text(
-                                    ('Pencucian motor/mobil'),style: TextStyle(fontSize: ScreenUtil().setSp(12)),
-                                    textAlign: TextAlign.center
-                                  ),
+                        child: GestureDetector(
+                      onTap: () {
+                        Navigator.push(context,
+                            MaterialPageRoute(builder: (context) {
+                          return const EmasMini();
+                        }));
+                      },
+                      child: Container(
+                        decoration: BoxDecoration(
+                            border: Border.all(color: Colors.black),
+                            color: Colors.white,
+                            borderRadius: BorderRadius.circular(20)),
+                        child: Column(
+                          children: [
+                            Container(
+                                decoration: BoxDecoration(
+                                    color: Colors.white,
+                                    borderRadius: BorderRadius.circular(20)),
+                                width: ScreenUtil().setWidth(180),
+                                height: ScreenUtil().setHeight(120),
+                                child: const Image(
+                                  image: AssetImage("assets/gambar/emas.png"),
+                                  fit: BoxFit.contain,
+                                )),
+                            const Padding(
+                              padding: EdgeInsets.all(8.0),
+                              child: Center(
+                                child: Text(
+                                  ('Emas Mini'),
+                                  textAlign: TextAlign.center,
                                 ),
-                              )
-                            ],
-                          ),
+                              ),
+                            )
+                          ],
+                        ),
+                      ),
+                    )),
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: GridTile(
+                        child: GestureDetector(
+                      onTap: () {
+                        Navigator.push(context,
+                            MaterialPageRoute(builder: (context) {
+                          return const Listrik();
+                        }));
+                      },
+                      child: Container(
+                        decoration: BoxDecoration(
+                            border: Border.all(color: Colors.black),
+                            color: Colors.white,
+                            borderRadius: BorderRadius.circular(20)),
+                        child: Column(
+                          children: [
+                            Container(
+                                decoration: BoxDecoration(
+                                    color: Colors.white,
+                                    borderRadius: BorderRadius.circular(20)),
+                                width: ScreenUtil().setWidth(180),
+                                height: ScreenUtil().setHeight(120),
+                                child: const Image(
+                                  image:
+                                      AssetImage("assets/gambar/listrik.png"),
+                                  fit: BoxFit.contain,
+                                )),
+                            const Center(
+                              child: Padding(
+                                padding: EdgeInsets.all(8.0),
+                                child: Text(
+                                  ('Voucher Listrik'),
+                                  textAlign: TextAlign.center,
+                                ),
+                              ),
+                            )
+                          ],
+                        ),
+                      ),
+                    )),
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: GridTile(
+                        child: GestureDetector(
+                      onTap: () {
+                        Navigator.push(context,
+                            MaterialPageRoute(builder: (context) {
+                          return const PembayaranPdam();
+                        }));
+                      },
+                      child: Container(
+                        decoration: BoxDecoration(
+                            border: Border.all(color: Colors.black),
+                            color: Colors.white,
+                            borderRadius: BorderRadius.circular(20)),
+                        child: Column(
+                          children: [
+                            Container(
+                                decoration: BoxDecoration(
+                                    color: Colors.white,
+                                    borderRadius: BorderRadius.circular(20)),
+                                width: ScreenUtil().setWidth(180),
+                                height: ScreenUtil().setHeight(120),
+                                child: const Image(
+                                  image: AssetImage("assets/gambar/air.png"),
+                                  fit: BoxFit.contain,
+                                )),
+                            const Center(
+                              child: Padding(
+                                padding: EdgeInsets.all(8.0),
+                                child: Text(
+                                  ('Pembayaran PDAM'),
+                                  textAlign: TextAlign.center,
+                                ),
+                              ),
+                            )
+                          ],
+                        ),
+                      ),
+                    )),
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: GridTile(
+                        child: GestureDetector(
+                      onTap: () {
+                        Navigator.push(context,
+                            MaterialPageRoute(builder: (context) {
+                          return const EWallet();
+                        }));
+                      },
+                      child: Container(
+                        decoration: BoxDecoration(
+                            border: Border.all(color: Colors.black),
+                            color: Colors.white,
+                            borderRadius: BorderRadius.circular(20)),
+                        child: Column(
+                          children: [
+                            Container(
+                                decoration: BoxDecoration(
+                                    color: Colors.white,
+                                    borderRadius: BorderRadius.circular(20)),
+                                width: ScreenUtil().setWidth(180),
+                                height: ScreenUtil().setHeight(120),
+                                child: const Image(
+                                  image:
+                                      AssetImage("assets/gambar/ewallet.png"),
+                                  fit: BoxFit.contain,
+                                )),
+                            const Center(
+                              child: Text(
+                                ('E-Wallet'),
+                                textAlign: TextAlign.center,
+                              ),
+                            )
+                          ],
+                        ),
+                      ),
+                    )),
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: GridTile(
+                        child: GestureDetector(
+                      onTap: () {
+                        Navigator.push(context,
+                            MaterialPageRoute(builder: (context) {
+                          return const Cucii();
+                        }));
+                      },
+                      child: Container(
+                        decoration: BoxDecoration(
+                            border: Border.all(color: Colors.black),
+                            color: Colors.white,
+                            borderRadius: BorderRadius.circular(20)),
+                        child: Column(
+                          children: [
+                            Container(
+                                decoration: BoxDecoration(
+                                    color: Colors.white,
+                                    borderRadius: BorderRadius.circular(20)),
+                                width: ScreenUtil().setWidth(180),
+                                height: ScreenUtil().setHeight(120),
+                                child: const Image(
+                                  image: AssetImage("assets/gambar/cuci.png"),
+                                  fit: BoxFit.contain,
+                                )),
+                            Center(
+                              child: Padding(
+                                padding: const EdgeInsets.all(8.0),
+                                child: Text(('Pencucian motor/mobil'),
+                                    style: TextStyle(
+                                        fontSize: ScreenUtil().setSp(12)),
+                                    textAlign: TextAlign.center),
+                              ),
+                            )
+                          ],
                         ),
                       ),
                     )),
